@@ -1,7 +1,32 @@
 {
   "name": "doiioc",
   "private": true,
+  "workspaces": [
+    "packages/*",
+    "www"
+  ],
+  "scripts": {
+    "prettier": "prettier --config .prettierrc --write \"**/*.js\"",
+    "prettier:diff": "prettier --config .prettierrc --list-different \"**/*.js\"",
+    "lerna": "lerna"
+  },
   "devDependencies": {
-    "lerna": "^3.13.4"
+    "husky": "^2.2.0",
+    "lerna": "^3.13.4",
+    "lint-staged": "^8.1.6",
+    "prettier": "^1.17.0"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "yarn prettier",
+        "git add"
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
