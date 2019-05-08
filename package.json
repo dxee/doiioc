@@ -6,7 +6,7 @@
     "www"
   ],
   "scripts": {
-    "prettier": "prettier --config .prettierrc --write \"**/*.js\"",
+    "prettier": "prettier --config .prettierrc --ignore-path .prettierignore --write \"**/*.js\"",
     "prettier:diff": "prettier --config .prettierrc --list-different \"**/*.js\"",
     "lerna": "lerna"
   },
@@ -20,6 +20,10 @@
     "linters": {
       "*.js": [
         "yarn prettier",
+        "git add"
+      ],
+      "*.{md,scss,yml}": [
+        "prettier --write",
         "git add"
       ]
     }
