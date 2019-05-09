@@ -25,6 +25,9 @@
       "*.{md,scss,yml}": [
         "prettier --write",
         "git add"
+      ],
+      "yarn.lock": [
+        "git rm --cached"
       ]
     }
   },
