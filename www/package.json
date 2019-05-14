@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "www",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build"
+  },
+  "dependencies": {
+    "gatsby": "^2.1.32",
+    "gatsby-theme-doiioc": "*",
+    "gatsby-theme-doiioc-doc": "*",
+    "gatsby-theme-doiioc-blog": "*",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}
