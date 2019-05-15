@@ -1,0 +1,17 @@
+{
+  "name": "doiioc-content-blog",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "keywords": [
+    "doiioc",
+    "gatsby",
+    "react"
+  ],
+  "dependencies": {
+    "gatsby": "^2.4.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "gatsby-source-filesystem": "^2.0.34"
+  }
+}

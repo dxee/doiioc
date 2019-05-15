@@ -1,22 +1,12 @@
 module.exports = {
   __experimentalThemes: [
     {
-      resolve: 'gatsby-theme-doiioc',
-      options: {
-        notesPath: '/txt'
-      }
+      resolve: 'doiioc-theme-default'
     },
     {
-      resolve: 'gatsby-theme-doiioc-doc',
+      resolve: 'doiioc-content-blog',
       options: {
-        projectsPath: '/work',
-        projects: 'projects'
-      }
-    },
-    {
-      resolve: 'gatsby-theme-doiioc-blog',
-      options: {
-        postsPath: '/writing'
+        blogsPath: 'content/blogs'
       }
     }
   ],

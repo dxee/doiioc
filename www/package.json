@@ -7,11 +7,10 @@
     "build": "gatsby build"
   },
   "dependencies": {
-    "gatsby": "^2.1.32",
-    "gatsby-theme-doiioc": "*",
-    "gatsby-theme-doiioc-doc": "*",
-    "gatsby-theme-doiioc-blog": "*",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "gatsby": "^2.4.5",
+    "doiioc-theme-default": "*",
+    "doiioc-content-blog": "*",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   }
 }
