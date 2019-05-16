@@ -1,4 +1,9 @@
 module.exports = {
+  siteMetadata: {
+    title: 'doiioc',
+    email: 'bing.fxx@gmail.com'
+  },
+  plugins: ['gatsby-plugin-doiioc'],
   __experimentalThemes: [
     {
       resolve: 'doiioc-theme-default'
@@ -8,17 +13,6 @@ module.exports = {
       options: {
         blogsPath: 'content/blogs'
       }
-    },
-    {
-      resolve: 'doiioc-content-common'
     }
-  ],
-  siteMetadata: {
-    title: 'Digital Garden',
-    email: 'johnotander@gmail.com',
-    social: {
-      twitter: '4lpine',
-      github: 'johno'
-    }
-  }
+  ]
 }
