@@ -1,0 +1,14 @@
+{
+  "name": "doiioc-content-common",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "keywords": [
+    "doiioc",
+    "gatsby"
+  ],
+  "devDependencies": {
+    "gatsby": "^2.5.0",
+    "gatsby-source-filesystem": "^2.0.35"
+  }
+}

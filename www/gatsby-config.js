@@ -8,6 +8,9 @@ module.exports = {
       options: {
         blogsPath: 'content/blogs'
       }
+    },
+    {
+      resolve: 'doiioc-content-common'
     }
   ],
   siteMetadata: {
