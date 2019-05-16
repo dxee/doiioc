@@ -6,7 +6,7 @@ module.exports = {
   plugins: ['gatsby-plugin-doiioc'],
   __experimentalThemes: [
     {
-      resolve: 'doiioc-theme-default'
+      resolve: 'doiioc-theme'
     },
     {
       resolve: 'doiioc-content-blog',

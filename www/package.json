@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "doiioc-content-blog": "*",
-    "doiioc-theme-default": "*",
+    "doiioc-theme": "*",
     "gatsby": "^2.4.6",
     "gatsby-plugin-doiioc": "*",
     "react": "^16.8.6",

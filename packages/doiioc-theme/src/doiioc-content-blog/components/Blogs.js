@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
+
 import * as Mixins from '../../Mixins'
 import * as t from '../../Typography'
 import Colors from '../../Colors'
-import { Link } from 'gatsby'
 import Layout, { Content } from '../../components/Layout'
 
 const BlogListWrapper = styled(Content)`
@@ -60,7 +61,6 @@ const Excerpt = styled(t.P)`
 class IndexPage extends React.Component {
   render() {
     const blogList = this.props.blogs
-    blogList.forEach(x => console.log('------------', x))
     return (
       <Layout>
         <BlogListWrapper>
