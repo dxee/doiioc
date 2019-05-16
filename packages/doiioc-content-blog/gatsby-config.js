@@ -2,7 +2,6 @@ module.exports = config => {
   const plugins = []
 
   return {
-    __experimentalThemes: [],
     plugins: [
       ...plugins,
       {
