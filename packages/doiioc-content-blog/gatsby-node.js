@@ -11,27 +11,11 @@ const blogsTemplate = require.resolve('./src/templates/blogs')
 
 exports.createPages = async ({ graphql, actions }, pluginOptions) => {
   const { createPage } = actions
-  // Relative directory
-  const { blogsPath = 'blogs' } = pluginOptions
-
-  const getBlogPath = node => {
-    return path.join(
-      blogsPath,
-      node.parent.relativeDirectory,
-      node.frontmatter.id
-    )
-  }
-
   const result = await graphql(`
     {
-      mdxPages: allMdx {
+      allMdx {
         edges {
           node {
-            id
-            frontmatter {
-              id
-              title
-            }
             parent {
               ... on File {
                 name
@@ -39,6 +23,14 @@ exports.createPages = async ({ graphql, actions }, pluginOptions) => {
                 relativeDirectory
                 sourceInstanceName
               }
+            }
+            id
+            frontmatter {
+              id
+              title
+            }
+            fields {
+              slug
             }
           }
         }
@@ -51,41 +43,39 @@ exports.createPages = async ({ graphql, actions }, pluginOptions) => {
     throw new Error(`Could not query posts`, result.errors)
   }
 
-  const { mdxPages } = result.data
-  const posts = mdxPages.edges.filter(
-    ({ node }) => node.parent.sourceInstanceName === 'blogs'
-  )
-
-  // Create posts pages
-  posts.forEach(({ node }) => {
-    createPage({
-      path: getBlogPath(node),
-      context: node,
-      component: blogTempate
+  // create blog pages
+  result.data.allMdx.edges
+    .filter(({ node }) => node.parent.sourceInstanceName === 'blogs')
+    .forEach(({ node }) => {
+      createPage({
+        path: node.fields.slug,
+        context: node,
+        component: blogTempate
+      })
     })
-  })
 
   createPage({
-    path: blogsPath,
+    path: `${pluginOptions.blogsPath}`,
     component: blogsTemplate
   })
 }
 
 exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `Mdx`) {
-    let slug = createFilePath({ node, getNode, trailingSlash: false })
-
-    // use id as the last path
-    const lastIndex = slug.lastIndexOf('/')
-    slug = slug.substring(0, lastIndex + 1) + node.frontmatter.id
-    createNodeField({
-      node,
-      name: `slug`,
-      value: `${pluginOptions.blogsPath}${slug}`
-    })
+  if ('Mdx' !== node.internal.type) {
+    return
   }
+
+  // use id as the last path
+  const { createNodeField } = actions
+  let slug = createFilePath({ node, getNode, trailingSlash: false })
+  slug = slug.substring(0, slug.lastIndexOf('/') + 1) + node.frontmatter.id
+
+  // create slug field
+  createNodeField({
+    node,
+    name: 'slug',
+    value: `${pluginOptions.blogsPath}${slug}`
+  })
 }
 
 exports.onPreBootstrap = ({ store }, pluginOptions) => {
@@ -99,20 +89,6 @@ exports.onPreBootstrap = ({ store }, pluginOptions) => {
     if (!fs.existsSync(dir)) {
       debug(`Initializing ${dir} directory`)
       mkdirp.sync(dir)
-    }
-  })
-}
-
-exports.onCreateWebpackConfig = ({ loaders, actions }) => {
-  actions.setWebpackConfig({
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          include: path.dirname(require.resolve(`doiioc-content-blog`)),
-          use: [loaders.js()]
-        }
-      ]
     }
   })
 }

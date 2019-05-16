@@ -8,10 +8,12 @@
     "gatsby",
     "react"
   ],
-  "dependencies": {
-    "gatsby": "^2.4.5",
+  "peerDependencies": {
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "gatsby-source-filesystem": "^2.0.34"
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "gatsby": "^2.4.6",
+    "gatsby-source-filesystem": "^2.0.35"
   }
 }

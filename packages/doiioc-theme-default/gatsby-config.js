@@ -22,6 +22,6 @@ module.exports = options => {
           plugins: ['gatsby-remark-prismjs']
         }
       }
-    ].filter(Boolean)
+    ]
   }
 }
